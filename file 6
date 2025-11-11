@@ -1,0 +1,78 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #00ffcc;
+  font-family: 'Orbitron', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pkclash-theme {
+  max-width: 800px;
+  width: 90%;
+  text-align: center;
+  text-shadow: 0 0 10px #00ffcc;
+  padding: 2rem;
+}
+
+header h1 {
+  font-size: 3.5rem;
+  background: linear-gradient(45deg, #ff1a75, #00ffcc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.stake-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.stake-grid button {
+  background: #ff1a75;
+  border: 2px solid #00ffcc;
+  color: white;
+  padding: 1.2rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 0 15px #ff1a75;
+  transition: 0.3s;
+  border-radius: 8px;
+}
+
+.stake-grid button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #00ffcc;
+}
+
+.live-ladder {
+  background: rgba(0, 255, 204, 0.1);
+  border: 1px solid #00ffcc;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+.live-ladder ul { list-style: none; }
+.live-ladder li { padding: 0.5rem; border-bottom: 1px solid rgba(0,255,204,0.3); }
+
+.battle-sim {
+  background: #000;
+  color: #fff;
+  padding: 2rem;
+  border: 2px solid #ff1a75;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+footer a {
+  color: #00ffcc;
+  text-decoration: underline;
+}
