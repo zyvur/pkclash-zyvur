@@ -3,12 +3,10 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  background: url('/rayquaza.jpg') center/cover no-repeat fixed;
+  background: url('/rayquaza-bg.jpg') center/cover fixed no-repeat;
   font-family: 'Press Start 2P', monospace;
   color: white;
-  min-height: 100vh;
-  display: flex;
-  image-rendering: pixelated;
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -16,83 +14,83 @@ body {
   display: flex;
   width: 100vw;
   height: 100vh;
-  backdrop-filter: brightness(0.85) contrast(1.1);
 }
 
 .left-side {
   flex: 1;
-  padding: 2rem;
+  padding: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 2rem;
-  background: rgba(0,0,0,0.4);
-  border-right: 8px solid #000;
+  background: rgba(0,0,0,0.3);
 }
 
-.right-side {
-  flex: 0 0 320px;
-  background: rgba(0,20,0,0.8);
+.ladder-side {
+  flex: 0 0 280px;
+  background: rgba(0,0,0,0.6);
   padding: 2rem;
-  border-left: 4px solid #fff;
-  overflow-y: auto;
+  border-left: 6px solid #fff;
 }
 
-header h1 {
-  font-size: 2.8rem;
-  color: #ff0000;
-  text-shadow: 4px 4px 0 #000;
-}
+header h1 { font-size: 2.5rem; color: #ffcc00; text-shadow: 4px 4px 0 #000; }
 
 button {
-  background: #ff0000;
-  border: 6px solid #000;
+  background: linear-gradient(#ff6600, #cc4400);
+  border: 4px solid #000;
   color: white;
-  padding: 1rem 2rem;
+  padding: 1.2rem 2.5rem;
   font-family: inherit;
   font-size: 1rem;
   cursor: pointer;
-  box-shadow: 0 6px 0 #aa0000;
-  transition: all 0.1s;
+  box-shadow: 0 8px 0 #aa3300;
+  transition: all 0.2s;
+  border-radius: 8px;
 }
 
-button:hover { background: #ff3333; }
-button:active { 
-  transform: translateY(6px); 
-  box-shadow: 0 0 0 #aa0000; 
-}
+button:hover { transform: translateY(-2px); box-shadow: 0 12px 0 #aa3300; }
+button:active { transform: translateY(6px); box-shadow: 0 2px 0 #aa3300; }
 
-.mode-select button { background: #0066ff; box-shadow: 0 6px 0 #0044aa; }
-.stake-select button { background: #00aa00; box-shadow: 0 6px 0 #006600; }
-
-.ladder-side h3 { color: #ffcc00; text-shadow: 3px 3px 0 #000; }
+.ladder-side h3 { color: #ff0000; margin-bottom: 1.5rem; text-shadow: 2px 2px 0 #000; }
+.ladder-side ul { list-style: none; }
 .ladder-side li { 
   display: flex; 
   justify-content: space-between; 
-  padding: 0.8rem 0; 
+  padding: 1rem 0; 
   border-bottom: 2px dashed #00ff00; 
+  font-size: 0.9rem;
 }
 
-.battle-frame {
-  flex: 1;
+.battle-container {
   position: relative;
-  background: #000;
+  flex: 1;
+  height: 100vh;
+  max-height: 100vh;
 }
 
 .showdown-embed {
-  width: 100%;
-  height: 100%;
-  border: 8px solid #fff;
-  box-shadow: 0 0 0 8px #000;
+  width: 85vw !important;
+  height: 85vh !important;
+  max-width: 1200px !important;
+  max-height: 800px !important;
+  border: 12px solid #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 0 12px #000, inset 0 0 40px rgba(0,0,0,0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
 }
 
 .return-btn {
   position: absolute;
-  bottom: 20px;
+  bottom: 5vh;
   left: 50%;
   transform: translateX(-50%);
-  background: #ff6600;
-  padding: 1rem 3rem;
+  background: linear-gradient(#0066ff, #0044aa);
+  padding: 1.5rem 4rem;
   font-size: 1.2rem;
-  z-index: 100;
+  z-index: 20;
+  border-radius: 12px;
 }
