@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import trainer1 from './assets/trainer1.png'  // You'll add these
-import trainer2 from './assets/trainer2.png'
 
 function App() {
   const [showBattle, setShowBattle] = useState(false)
@@ -17,12 +15,12 @@ function App() {
         <h2>VS</h2>
         <div className="vs-screen">
           <div>
-            <img src={trainer1} alt="You" />
+            <span className="trainer-emoji">Trainer</span>
             <p>@Zyvur</p>
           </div>
-          <div style={{ fontSize: '2rem', fontWeight: 'bold' }}>VS</div>
+          <div className="vs-text">VS</div>
           <div>
-            <img src={trainer2} alt="Rival" />
+            <span className="trainer-emoji">Rival</span>
             <p>Rival</p>
           </div>
         </div>
