@@ -1,20 +1,37 @@
 import { useState } from 'react'
+import trainer1 from './assets/trainer1.png'  // You'll add these
+import trainer2 from './assets/trainer2.png'
 
 function App() {
   const [showBattle, setShowBattle] = useState(false)
+  const [stake, setStake] = useState(0)
 
-  const startClash = (stake) => {
+  const startClash = (amount) => {
+    setStake(amount)
     setShowBattle(true)
-    alert(`Launching $${stake} Clash!\n\nIn live version: A new window opens with your opponent.`)
   }
 
   if (showBattle) {
     return (
       <div className="battle-sim">
-        <h2>Battle Window (Live in v2)</h2>
-        <p>Showdown-style 1v1 battle vs. opponent.</p>
-        <button onClick={() => { setShowBattle(false); alert('You Win! +$' + (stake * 0.95)) }}>
-          End Battle (You Win)
+        <h2>VS</h2>
+        <div className="vs-screen">
+          <div>
+            <img src={trainer1} alt="You" />
+            <p>@Zyvur</p>
+          </div>
+          <div style={{ fontSize: '2rem', fontWeight: 'bold' }}>VS</div>
+          <div>
+            <img src={trainer2} alt="Rival" />
+            <p>Rival</p>
+          </div>
+        </div>
+        <p>Battle loading...</p>
+        <button onClick={() => {
+          setShowBattle(false)
+          alert(`YOU WIN!\n+$${stake * 0.95} added!`)
+        }}>
+          END BATTLE
         </button>
       </div>
     )
@@ -23,23 +40,33 @@ function App() {
   return (
     <div className="pkclash-theme">
       <header>
-        <h1>PKClash Arena</h1>
-        <p>Stake real money. Battle in ranked PvP. Win big.</p>
+        <h1>PKClash</h1>
+        <p>Choose your stake!</p>
       </header>
       <div className="stake-grid">
-        <button onClick={() => startClash(5)}>$5 Bronze Clash</button>
-        <button onClick={() => startClash(10)}>$10 Silver Clash</button>
-        <button onClick={() => startClash(20)}>$20 Gold Clash</button>
+        <div>
+          <button onClick={() => startClash(5)}></button>
+          <div className="stake-label">$5 Bronze</div>
+        </div>
+        <div>
+          <button onClick={() => startClash(10)}></button>
+          <div className="stake-label">$10 Silver</div>
+        </div>
+        <div>
+          <button onClick={() => startClash(20)}></button>
+          <div className="stake-label">$20 Gold</div>
+        </div>
       </div>
       <div className="live-ladder">
-        <h3>Live Ladder</h3>
+        <h3>LEADERBOARD</h3>
         <ul>
-          <li>@Zyvur – 1500 ELO (5 Wins)</li>
-          <li>Opponent – 1480 ELO (Waiting...)</li>
+          <li><span>1. @Zyvur</span> <span>1500</span></li>
+          <li><span>2. Rival</span> <span>1480</span></li>
+          <li><span>3. Noob</span> <span>1200</span></li>
         </ul>
       </div>
       <footer>
-        <p>Demo Mode | AU Legal Skill PvP | <a href="https://pkclash.au" target="_blank">Go Live →</a></p>
+        <p>Demo • AU Legal • <a href="https://pkclash.au">Go Live</a></p>
       </footer>
     </div>
   )
