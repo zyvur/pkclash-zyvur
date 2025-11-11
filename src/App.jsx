@@ -1,71 +1,63 @@
 import { useState } from 'react'
+import BattleSimulator from './BattleSimulator.jsx' // Showdown embed
 
 function App() {
-  const [showBattle, setShowBattle] = useState(false)
-  const [stake, setStake] = useState(0)
+  const [battleMode, setBattleMode] = useState(null)
+  const [inBattle, setInBattle] = useState(false)
+  const [stakeReady, setStakeReady] = useState(false)
 
-  const startClash = (amount) => {
-    setStake(amount)
-    setShowBattle(true)
-  }
+  const selectMode = (mode) => setBattleMode(mode)
 
-  if (showBattle) {
+  const readyMatch = () => setStakeReady(true)
+
+  const startBattle = () => setInBattle(true)
+
+  if (inBattle) {
     return (
-      <div className="battle-sim">
-        <h2>VS</h2>
-        <div className="vs-screen">
-          <div>
-            <span className="trainer-emoji">Trainer</span>
-            <p>@Zyvur</p>
-          </div>
-          <div className="vs-text">VS</div>
-          <div>
-            <span className="trainer-emoji">Rival</span>
-            <p>Rival</p>
-          </div>
+      <div className="gba-container">
+        <BattleSimulator format="gen9randombattle" vsAI={true} />
+        <div className="ladder-side">
+          <h3>LIVE LADDER</h3>
+          <ul>
+            <li>1. @Zyvur <span>1500 ELO</span></li>
+            <li>2. Rival <span>1480</span></li>
+            <li>3. Player3 <span>1420</span></li>
+          </ul>
         </div>
-        <p>Battle loading...</p>
-        <button onClick={() => {
-          setShowBattle(false)
-          alert(`YOU WIN!\n+$${stake * 0.95} added!`)
-        }}>
-          END BATTLE
-        </button>
       </div>
     )
   }
 
   return (
-    <div className="pkclash-theme">
-      <header>
-        <h1>PKClash</h1>
-        <p>Choose your stake!</p>
-      </header>
-      <div className="stake-grid">
-        <div>
-          <button onClick={() => startClash(5)}></button>
-          <div className="stake-label">$5 Bronze</div>
+    <div className="gba-container">
+      <div className="left-side">
+        <header>
+          <h1>PKClash</h1>
+          <p>Select Battle Mode</p>
+        </header>
+        <div className="mode-select">
+          <button 
+            className={battleMode === 'gen9random' ? 'selected' : ''}
+            onClick={() => selectMode('gen9random')}
+          >
+            Gen 9 Random Battle
+          </button>
         </div>
-        <div>
-          <button onClick={() => startClash(10)}></button>
-          <div className="stake-label">$10 Silver</div>
-        </div>
-        <div>
-          <button onClick={() => startClash(20)}></button>
-          <div className="stake-label">$20 Gold</div>
-        </div>
+        {battleMode === 'gen9random' && (
+          <div className="stake-select">
+            <button onClick={readyMatch}>💰 $5 Match - Ready Up</button>
+            {stakeReady && <button onClick={startBattle}>▶️ Launch Battle</button>}
+          </div>
+        )}
       </div>
-      <div className="live-ladder">
-        <h3>LEADERBOARD</h3>
+      <div className="ladder-side">
+        <h3>LIVE LADDER</h3>
         <ul>
-          <li><span>1. @Zyvur</span> <span>1500</span></li>
-          <li><span>2. Rival</span> <span>1480</span></li>
-          <li><span>3. Noob</span> <span>1200</span></li>
+          <li>1. @Zyvur <span>1500 ELO</span></li>
+          <li>2. Rival <span>1480</span></li>
+          <li>3. Player3 <span>1420</span></li>
         </ul>
       </div>
-      <footer>
-        <p>Demo • AU Legal • <a href="https://pkclash.au">Go Live</a></p>
-      </footer>
     </div>
   )
 }
